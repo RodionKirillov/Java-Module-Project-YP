@@ -38,7 +38,11 @@ public class Main {
                         order.setPrice(price);
                         calculator.add(order);
                         System.out.println("Товар успешно добавлен");
-                        System.out.println("Общая сумма всех товаров: " + calculator.sumOrder());
+                        System.out.println(
+                                "Общая сумма всех товаров: "
+                                        + calculator.sumOrder()
+                                        + calculator.rubEnd()
+                        );
                         break;
                     } else {
                         System.out.println("Ошибка. Введите положительное число.");
@@ -54,6 +58,7 @@ public class Main {
             if (stop.equalsIgnoreCase(exit)) {
                 System.out.println("Добавленные товары:  ");
                 calculator.nameOrder(numOfVisitors);
+                scanner.close();
                 break;
             }
         }

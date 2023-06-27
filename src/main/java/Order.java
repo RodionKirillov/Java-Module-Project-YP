@@ -1,7 +1,7 @@
 public class Order {
 
-    String nameOrder;
-    double price;
+    private String nameOrder;
+    private double price;
 
 
 

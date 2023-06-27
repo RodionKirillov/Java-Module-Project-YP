@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
 public class Calculator {
-    ArrayList<Order> check = new ArrayList<>();
-    String nameCheck = "Позиция №%d : %s, Цена - %.2f %s.";
+    private final ArrayList<Order> check = new ArrayList<>();
 
     public void add(Order order) {
         check.add(order);
@@ -14,6 +13,18 @@ public class Calculator {
             sum += order.getPrice();
         }
         return sum;
+    }
+
+    public String rubEnd() {
+        String rub;
+        if (sumOrder() < 1) {
+            rub = " копеек.";
+        } else if (sumOrder() < 2) {
+            rub = " рубль.";
+        } else {
+            rub = " рублей.";
+        }
+        return rub;
     }
 
     public void nameOrder(int numOfVisitors) {
@@ -28,15 +39,18 @@ public class Calculator {
             } else {
                 rub = "рублей";
             }
+            String nameCheck = "Позиция №%d : %s, Цена - %.2f %s.";
             System.out.printf((nameCheck) + "%n", i + 1, name, price, rub);
         }
         double sum = sumOrder() / numOfVisitors;
+        String rub2;
         if (sum < 1) {
-            System.out.printf("Каждый человек должен заплатить - %.2f копеек. %n", sum);
+            rub2 = "копеек";
         } else if (sum < 2) {
-            System.out.printf("Каждый человек должен заплатить - %.2f рубль. %n", sum);
+            rub2 = "рубль";
         } else {
-            System.out.printf("Каждый человек должен заплатить - %.2f рублей. %n", sum);
+            rub2 = "рублей";
         }
+        System.out.printf("Каждый человек должен заплатить - %.2f %s. %n", sum, rub2);
     }
 }

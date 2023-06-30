@@ -38,10 +38,10 @@ public class Main {
                         order.setPrice(price);
                         calculator.add(order);
                         System.out.println("Товар успешно добавлен");
-                        System.out.println(
-                                "Общая сумма всех товаров: "
-                                        + calculator.sumOrder()
-                                        + calculator.rubEnd(calculator.sumOrder())
+                        System.out.printf(
+                                "Общая сумма всех товаров: %.2f %s %n",
+                                calculator.sumOrder(),
+                                calculator.rubEnd(calculator.sumOrder())
                         );
                         break;
                     } else {

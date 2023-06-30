@@ -15,42 +15,29 @@ public class Calculator {
         return sum;
     }
 
-    public String rubEnd() {
-        String rub;
-        if (sumOrder() < 1) {
-            rub = " копеек.";
-        } else if (sumOrder() < 2) {
-            rub = " рубль.";
+    public String rubEnd(double num) {
+        int lastNum = (int) num % 10;
+        int lastTwoNum = (int) num % 100;
+
+        if (lastTwoNum >= 11 && lastTwoNum <= 19) {
+            return " рублей.";
+        } else if (lastNum == 1) {
+            return " рубль.";
+        } else if (lastNum >= 2 && lastNum <= 4) {
+            return " рубля.";
         } else {
-            rub = " рублей.";
+            return " рублей.";
         }
-        return rub;
     }
 
     public void nameOrder(int numOfVisitors) {
         for (int i = 0; i < check.size(); i++) {
             double price = check.get(i).getPrice();
             String name = check.get(i).getNameOrder();
-            String rub;
-            if (price < 1) {
-                rub = "копеек";
-            } else if (price < 2) {
-                rub = "рубль";
-            } else {
-                rub = "рублей";
-            }
-            String nameCheck = "Позиция №%d : %s, Цена - %.2f %s.";
-            System.out.printf((nameCheck) + "%n", i + 1, name, price, rub);
+            String nameCheck = "Позиция №%d : %s, Цена - %.2f %s";
+            System.out.printf((nameCheck) + "%n", i + 1, name, price, rubEnd(price));
         }
         double sum = sumOrder() / numOfVisitors;
-        String rub2;
-        if (sum < 1) {
-            rub2 = "копеек";
-        } else if (sum < 2) {
-            rub2 = "рубль";
-        } else {
-            rub2 = "рублей";
-        }
-        System.out.printf("Каждый человек должен заплатить - %.2f %s. %n", sum, rub2);
+        System.out.printf("Каждый человек должен заплатить - %.2f %s %n", sum, rubEnd(sum));
     }
 }

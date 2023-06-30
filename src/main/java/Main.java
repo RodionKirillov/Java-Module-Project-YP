@@ -41,7 +41,7 @@ public class Main {
                         System.out.println(
                                 "Общая сумма всех товаров: "
                                         + calculator.sumOrder()
-                                        + calculator.rubEnd()
+                                        + calculator.rubEnd(calculator.sumOrder())
                         );
                         break;
                     } else {

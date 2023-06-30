@@ -13,11 +13,13 @@ public class Calculator {
             sum += order.getPrice();
         }
         return sum;
+
     }
 
     public String rubEnd(double num) {
         int lastNum = (int) num % 10;
         int lastTwoNum = (int) num % 100;
+
 
         if (lastTwoNum >= 11 && lastTwoNum <= 19) {
             return " рублей.";
@@ -28,6 +30,7 @@ public class Calculator {
         } else {
             return " рублей.";
         }
+
     }
 
     public void nameOrder(int numOfVisitors) {
